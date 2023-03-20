@@ -12,12 +12,28 @@ struct CreateLearners : Migration {
         return database.schema("learners")
             .id()
         .field("name", .string, .required)
-        .field("name", .string, .required)
+        .field("path", .string, .required)
         .create()
     }
     
     func revert(on database: FluentKit.Database) -> NIOCore.EventLoopFuture<Void> {
         return database.schema("learners").delete()
+    }
+    
+    
+}
+
+struct CreateProject : Migration {
+    func prepare(on database: FluentKit.Database) -> NIOCore.EventLoopFuture<Void> {
+        return database.schema("Projects")
+            .id()
+        .field("name", .string, .required)
+        .field("link", .string, .required)
+        .create()
+    }
+    
+    func revert(on database: FluentKit.Database) -> NIOCore.EventLoopFuture<Void> {
+        return database.schema("Projects").delete()
     }
     
     

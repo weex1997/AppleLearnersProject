@@ -27,3 +27,23 @@ struct LearnersController: RouteCollection {
         return learner.save (on: req.db).transform(to: .ok)
     }
 }
+
+struct ProjectsController: RouteCollection {
+    func boot (routes: RoutesBuilder) throws {
+        let Projects = routes.grouped ("Projects")
+
+        Projects.get(use: index) //show
+        Projects.post(use: create) //create
+    }
+    
+    //project route
+    func index (req: Request) throws -> EventLoopFuture<[Projects]> {
+        return Projects.query(on: req.db).all()
+    }
+    
+    //create project
+    func create (req: Request) throws -> EventLoopFuture<HTTPStatus> {
+        let project = try req.content.decode(Projects.self)
+        return project.save (on: req.db).transform(to: .ok)
+    }
+}
