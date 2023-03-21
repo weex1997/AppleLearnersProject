@@ -101,5 +101,5 @@ Swift
 `
 
 ## Server Links : 
-[Learners](https://apple-learners-projects.herokuapp.com/learners) - 
-[Projects](https://apple-learners-projects.herokuapp.com/projects) 
+[Learners](https://apple-learners-project.herokuapp.com/learners) - 
+[Projects](https://apple-learners-project.herokuapp.com/projects) 
