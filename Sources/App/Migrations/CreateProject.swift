@@ -1,23 +1,23 @@
 //
-//  CreateLearners.swift
+//  CreateProject.swift
 //  
 //
-//  Created by Wedad Almehmadi on 19/03/2023.
+//  Created by Wedad Almehmadi on 20/03/2023.
 //
 
 import Fluent
 
-struct CreateLearners : Migration {
+struct CreateProject : Migration {
     func prepare(on database: FluentKit.Database) -> NIOCore.EventLoopFuture<Void> {
-        return database.schema("learners")
+        return database.schema("projects")
             .id()
         .field("name", .string, .required)
-        .field("path", .string, .required)
+        .field("link", .string, .required)
         .create()
     }
     
     func revert(on database: FluentKit.Database) -> NIOCore.EventLoopFuture<Void> {
-        return database.schema("learners").delete()
+        return database.schema("projects").delete()
     }
     
     

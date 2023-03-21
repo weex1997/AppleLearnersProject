@@ -8,9 +8,9 @@ public func configure(_ app: Application) throws {
     // app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
 
     app.databases.use(.postgres(hostname: "localhost", username: "wedadalmehmadi",
-                                password: "1003", database: "AppleLearners"), as: .psql)
+                                password: "", database: "AppleLearners"), as: .psql)
     
-    app.migrations.add(CreateLearners())
+    app.migrations.add([CreateLearners(), CreateProject()])
     try app.autoMigrate() .wait()
     
     // register routes

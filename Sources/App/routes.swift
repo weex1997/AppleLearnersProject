@@ -11,4 +11,6 @@ func routes(_ app: Application) throws {
     }
     
     try app.register (collection: LearnersController())
+    try app.register (collection: ProjectsController())
+
 }
